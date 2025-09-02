@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse with Freedom</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: #0d1117;
+      color: #ecf0f1;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background circles */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.6), transparent 70%);
+      animation: move 20s ease-in-out infinite alternate;
+    }
+
+    .circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: 20%;
+      left: -10%;
+      animation-duration: 25s;
+    }
+
+    .circle:nth-child(2) {
+      width: 400px;
+      height: 400px;
+      top: 60%;
+      left: 70%;
+      animation-duration: 30s;
+    }
+
+    .circle:nth-child(3) {
+      width: 250px;
+      height: 250px;
+      top: 80%;
+      left: 10%;
+      animation-duration: 35s;
+    }
+
+    @keyframes move {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  25% { transform: translate(100px, -50px) scale(1.2); opacity: 1; }
+  50% { transform: translate(-80px, 60px) scale(0.9); opacity: 0.8; }
+  75% { transform: translate(120px, 100px) scale(1.1); opacity: 1; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+}
+
+    /* First section (hero) */
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .main-heading {
+      font-size: 3.5rem;
+      font-weight: 300;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .freedom {
+      font-weight: 600;
+      color: #3498db;
+      position: relative;
+    }
+
+    .search-container {
+      margin-top: 2rem;
+    }
+
+    .search-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      border: 2px solid #3498db;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 1.2rem 1.5rem;
+      border: none;
+      font-size: 1.1rem;
+      outline: none;
+      background: transparent;
+      color: #ecf0f1;
+    }
+
+    .search-input::placeholder {
+      color: #95a5a6;
+    }
+
+    .search-button {
+      padding: 1.2rem 2rem;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Product Info Section (centered) */
+    .info-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .info-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #3498db;
+    }
+
+    .info-section p {
+      font-size: 1.2rem;
+      color: #bdc3c7;
+      max-width: 700px;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .main-heading {
+        font-size: 2.5rem;
+      }
+      .search-form {
+        flex-direction: column;
+      }
+      .search-button {
+        border-top: 1px solid #3498db;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-heading {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background -->
+  <div class="background">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <!-- Main Section -->
+  <div class="container">
+    <h1 class="main-heading">
+      Browse with <span class="freedom">freedom</span>
+    </h1>
+
+    <div class="search-container">
+      <form class="search-form" action="/browse" method="GET">
+        <input 
+          type="text" 
+          name="url" 
+          class="search-input" 
+          placeholder="Enter website URL" 
+          required
+          autocomplete="off"
+        >
+        <button type="submit" class="search-button">Search</button>
+      </form>
+      
+      <div style="margin-top: 2rem;">
+        <a href="/cookies" style="color: #95a5a6; text-decoration: none; font-size: 0.9rem;">🍪 Manage Cookies</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
